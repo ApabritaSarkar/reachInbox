@@ -1,11 +1,7 @@
-import React from "react";
+import { useState } from "react";
 
-interface SearchBarProps {
-  onSearch: (query: string) => void;
-}
-
-const SearchBar: React.FC<SearchBarProps> = ({ onSearch }) => {
-  const [query, setQuery] = React.useState("");
+export const SearchBar = ({ onSearch }: { onSearch: (query?: string) => void }) => {
+  const [query, setQuery] = useState("");
 
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
@@ -13,25 +9,20 @@ const SearchBar: React.FC<SearchBarProps> = ({ onSearch }) => {
   };
 
   return (
-    <form
-      onSubmit={handleSubmit}
-      className="flex items-center gap-2 p-4 bg-white shadow rounded-lg"
-    >
+    <form onSubmit={handleSubmit} className="flex gap-2 items-center">
       <input
         type="text"
         placeholder="Search emails..."
         value={query}
         onChange={(e) => setQuery(e.target.value)}
-        className="w-full p-2 rounded border bg-white text-black placeholder-gray-500"
+        className="flex-1 p-2 rounded border border-gray-300"
       />
       <button
         type="submit"
-        className="bg-blue-600 text-white px-4 py-2 rounded-lg hover:bg-blue-700"
+        className="px-4 py-2 bg-blue-600 text-white rounded hover:bg-blue-700"
       >
         Search
       </button>
     </form>
   );
 };
-
-export default SearchBar;

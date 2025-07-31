@@ -44,12 +44,12 @@ export const startImapConnections = async () => {
         });
         if (category === "Interested") {
           await sendSlackNotification(parsed.subject, parsed.from);
-          await triggerWebhook({
-            subject: parsed.subject,
-            from: parsed.from,
-            date: parsed.date,
-            category,
-          });
+          // await triggerWebhook({
+          //   subject: parsed.subject,
+          //   from: parsed.from,
+          //   date: parsed.date,
+          //   category,
+          // });
         }
 
         console.log("📧 Stored Email:", parsed.subject);
@@ -82,12 +82,12 @@ export const startImapConnections = async () => {
           });
           if (category === "Interested") {
             await sendSlackNotification(parsed.subject, parsed.from);
-            await triggerWebhook({
-              subject: parsed.subject,
-              from: parsed.from,
-              date: parsed.date,
-              category,
-            });
+            // await triggerWebhook({
+            //   subject: parsed.subject,
+            //   from: parsed.from,
+            //   date: parsed.date,
+            //   category,
+            // });
           }
 
           console.log("📩 New Email Stored:", parsed.subject);
